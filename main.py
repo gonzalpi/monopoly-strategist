@@ -60,6 +60,18 @@ P[:,33]     = (16/17)*P[:,33]
 P[:,10]     = P[:,10] + P[:,30]
 P[:,30]     = 0
 
+# matrix power and P display
+prob = np.linalg.matrix_power(P,100)
+np.set_printoptions(threshold=np.inf, precision=2, suppress=True)
+print("Probability percentage of landing on any given Monopoly tile.\nBegins with \"Go\" tile.")
+print("\nTiles 1:10")
+print(100*prob[0,0:10])
+print("\nTiles 11:20")
+print(100*prob[0,10:20])
+print("\nTiles 21:30")
+print(100*prob[0,20:30])
+print("\nTiles 31:40")
+print(100*prob[0,30:40])
 
 # diagonalization of P matrix
 # self-multiplying until change is minimal (must define a threshold)
@@ -69,6 +81,9 @@ P[:,30]     = 0
 
 '''
 np.set_printoptions(threshold=np.inf, precision=3, suppress=True) # prints whole array, 3 decimal places, no scientific notation
+
+'''
+'''
 print("Part 1")
 print(P[:,0:10])
 print("Part 2")
