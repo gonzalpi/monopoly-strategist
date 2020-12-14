@@ -72,16 +72,12 @@ P[:,30]     = 0
 prob = np.linalg.matrix_power(P,100)
 
 # display
-np.set_printoptions(threshold=np.inf, precision=2, suppress=True) # prints whole array, 3 decimal places, no scientific notation
+np.set_printoptions(threshold=np.inf, precision=2, suppress=True, linewidth=np.inf) # prints whole array, 2 decimal places, no scientific notation, no line wrapping
 print("Probability percentage of landing on any given Monopoly tile.\nBegins with \"Go\" tile.")
-print("\nTiles 1:10")
-print(100*prob[0,0:10])
-print("\nTiles 11:20")
-print(100*prob[0,10:20])
-print("\nTiles 21:30")
-print(100*prob[0,20:30])
-print("\nTiles 31:40")
-print(100*prob[0,30:40])
+print("\nTiles 1:20")
+print(100*prob[0,0:20])
+print("\nTiles 21:40")
+print(100*prob[0,20:40])
 
 # note: could be made more efficient by using eigvec*eigval^100*eigvec^-1
 # further work: analyze profitability taking into account price and rent too
