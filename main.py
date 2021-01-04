@@ -68,16 +68,22 @@ P[:,33]     = (16/17)*P[:,33]
 P[:,10]     = P[:,10] + P[:,30]
 P[:,30]     = 0
 
-# matrix power
-prob = np.linalg.matrix_power(P,100)
+# matrix power and identity
+probM = np.linalg.matrix_power(P,100)
+probI = np.dot(np.identity(40) , probM)
+
+# 1-d array
+probV = np.zeros(40)
+for m in range(40):
+    probV[m] = probI[m,m]
 
 # display
 np.set_printoptions(threshold=np.inf, precision=2, suppress=True, linewidth=np.inf) # prints whole array, 2 decimal places, no scientific notation, no line wrapping
 print("Probability percentage of landing on any given Monopoly tile.\nBegins with \"Go\" tile.")
 print("\nTiles 1:20")
-print(100*prob[0,0:20])
+print(100*probV[0:20])
 print("\nTiles 21:40")
-print(100*prob[0,20:40])
+print(100*probV[20:40])
 
 # note: could be made more efficient by using eigvec*eigval^100*eigvec^-1
 # further work: analyze profitability taking into account price and rent too
